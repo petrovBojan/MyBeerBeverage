@@ -1,0 +1,16 @@
+<div>
+    <p>favorites works!</p>
+    <button mat-icon-button (click)="toggleSelected()">
+        <mat-icon
+        *ngIf="selected"
+        aria-label="Example icon-button with a heart icon">
+        star
+      </mat-icon>
+    
+      <mat-icon
+        *ngIf="!selected"
+        aria-label="Example icon-button with a heart icon">
+        star_border
+      </mat-icon>
+      </button>
+</div>
