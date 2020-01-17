@@ -1,7 +1,17 @@
 <div class="header" role="banner">
     <h1>The Beer Bank</h1>
     <p>Find your favorite beer here</p>
-    <div class="search-bar">
-      <input type="text" placeholder="Search for beer name" >
-    </div>
+
+      <mat-form-field class="search-box">
+        <input matInput placeholder="Search" aria-label="Search" [matAutocomplete]="auto">
+        <button mat-button matSuffix mat-icon-button aria-label="search-icon">
+          <mat-icon>search</mat-icon>
+        </button>
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let beer of searchBeers" [value]="beer.name">
+            <span>{{beer.name}}</span>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+
 </div>

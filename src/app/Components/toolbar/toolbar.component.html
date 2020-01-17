@@ -1,12 +1,16 @@
-<div class="toolbar" role="banner">
-    <img
+<mat-toolbar class="primaryColor">
+
+<img
       width="40"
       alt="Beer Bank Logo"
       src="https://cdn2.iconfinder.com/data/icons/beer-5/92/icon71-08-512.png"  />
     <span>Welcome</span>
-      <div class="spacer"></div>
-      <nav class="aligning">
-        <a routerLink="/"> <h4>HOME</h4></a>
-        <a routerLink="/favorite"> <h4>Favorites</h4></a> 
-      </nav>
-  </div>
+
+  <div class="flexEnd"></div>
+  <button mat-button type="button"  [routerLink]="['/']" routerLinkActive="router-link-active">
+    HOME
+  </button>
+  <button mat-button type="button" [color]="primary" [routerLink]="['/favorite']" routerLinkActive="router-link-active">
+    FAVORITES
+  </button>
+</mat-toolbar>

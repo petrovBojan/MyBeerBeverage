@@ -1,16 +1,6 @@
-<div>
-    <p>favorites works!</p>
-    <button mat-icon-button (click)="toggleSelected()">
-        <mat-icon
-        *ngIf="selected"
-        aria-label="Example icon-button with a heart icon">
-        star
-      </mat-icon>
+
+<div class="card-container">
+  <app-card class="card" target="_blank" *ngFor="let beer of beers" [beer]="beer" >
     
-      <mat-icon
-        *ngIf="!selected"
-        aria-label="Example icon-button with a heart icon">
-        star_border
-      </mat-icon>
-      </button>
-</div>
+  </app-card>
+  </div>

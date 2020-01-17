@@ -1,24 +1,17 @@
 
-    <a class="card" target="_blank" >
-      <div class="star" (click)="toggleSelected()">
-        <mat-icon
-        *ngIf="selected"
-        aria-label="Example icon-button with a heart icon">
-        star
-      </mat-icon>
-    
-      <mat-icon
-        *ngIf="!selected"
-        aria-label="Example icon-button with a heart icon">
-        star_border
-      </mat-icon>
+    <a class="card" target="_blank"  (click)="openPopUp()" >
+      <div class="star" >
+
+          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.is_favourite}" (click)="addFavourite($event)">
+            <mat-icon>{{isFavourite()? 'star': 'star_border'}}</mat-icon>
+          </button>
+          
       </div>
       <img class="image"
       alt="Beer Image"
-      src= '{{ beer.image_url }}'  />
+      src= '{{ beer.image_url }}'  
+     />
       <h3>{{ beer.name }}</h3>
       <h6 class="gray-text">{{beer.tagline}}</h6>
-
-      
     </a>
 

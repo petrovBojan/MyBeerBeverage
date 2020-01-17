@@ -28,3 +28,33 @@
     align-items: flex-end;
 
   }
+
+
+
+  .primaryColor {
+    background-color: #ffa500;
+    height: 50px;
+    margin:  0px 0px 8px 8px;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    color: white;
+  
+  }
+  .sidenav {
+    width: 200px;
+  }
+  .flexEnd {
+    flex: auto;
+    justify-content: flex-end;
+  }
+  
+  .sidenav .mat-toolbar {
+    background: inherit;
+  }
+  
+  .mat-toolbar.mat-primary {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+  }

@@ -9,9 +9,10 @@ import { HeaderComponent } from './Components/header/header.component';
 import { CardsComponent } from './Components/cards/cards.component';
 import { CardComponent } from './Components/card/card.component';
 import { FavoritesComponent } from './Components/Pages/favorites/favorites.component';
-import { MatButtonModule } from '@angular/material';
-import { MatIconModule } from '@angular/material';
+import { MaterialModule } from './material.module';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { DetailsPopupComponent } from './Components/details-popup/details-popup.component';
 
 @NgModule({
   declarations: [
@@ -20,17 +21,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     HeaderComponent,
     CardsComponent,
     CardComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    DetailsPopupComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    MatButtonModule,
-    MatIconModule,
+    MaterialModule,
     BrowserAnimationsModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [FavoritesComponent,DetailsPopupComponent]
 })
 export class AppModule { }
