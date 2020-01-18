@@ -1,19 +1,18 @@
 <div>
 <app-toolbar></app-toolbar>
 
-<app-header></app-header>
+<app-header (searchedBeers)="onSearch($event)" > </app-header>
 
-<div class="content" role="main">
+<div class="content" >
 
-  <router-outlet></router-outlet>  
+  <router-outlet ></router-outlet>  
 
-  <!-- Footer -->
   <footer>
       Love Beers?&nbsp;
       <a href="http://www.skopsko.com.mk/access.php" target="_blank" rel="noopener"> Check out my favorite beer.
-        <div class="github-star-badge">
-          Skopsko
-        </div>
+        <img class="image"
+           src= 'https://www2.lunapic.com/editor/working/157937397146001829?3303246530'  
+     />
       </a>
   </footer>
 </div>

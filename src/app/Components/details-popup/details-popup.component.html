@@ -1,130 +1,52 @@
-<div class="modal" [class.is-active]="selectedBeer">
-  <div class="modal-background" (click)="toggleModal()"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title"></p>
-      <button
-        class="delete is-pulled-right"
-        aria-label="close"
-        (click)="toggleModal()"
-      ></button>
-    </header><div mat-dialog-title>
-      <div class="flex-spacer"></div>
-      <button mat-icon-button class="close-button" (click)="closeDialog()">
-        <mat-icon>close</mat-icon>
-      </button>
+<div class="flexEnd">
+  <button mat-icon-button class="flexEnd" (click)="closeDialog()">
+    <mat-icon>close</mat-icon>
+  </button>
+</div>
+<div mat-dialog-content>
+  <div class="flex-card">
+    <div class="image-row">
+      <img alt="Photo of beer" mat-card-lg-image [src]="beer.image_url">
     </div>
-    <div mat-dialog-content>
-      <div class="flex-card">
-        <div class="image-row">
-          <img alt="Photo of beer" mat-card-lg-image [src]="beer.image_url">
-        </div>
-        <div class="info-row">
-          <h3 class="beer-title">{{beer.name}}</h3>
-          <p class="beer-tagline">
-            {{beer.tagline}}
-          </p>
-          <hr>
-          <p>
-            <b>IBU: </b>{{beer.ibu}}&nbsp;&nbsp;
-            <b>ABV: </b>{{beer.abv}}%&nbsp;&nbsp;
-            <b>EBC: </b>{{beer.ebc}}&nbsp;&nbsp;
-          </p>
-          <p>
-            {{beer.description}}
-          </p>
-    
-          <b>Best served with:</b>
-          <ul>
-            <li *ngFor="let pairing of beer.food_pairing">
-              {{pairing}}
-            </li>
-          </ul>
-        </div>
-      </div>
-      <!-- TODO: Improve css, it doesnt look all too well -->
-      <div class="column-recomended">
-        <h3 class="beer-title">You may also like</h3>
-        <div class="grid-container">
-          <mat-grid-list [cols]="3" rowHeight="200px">
-            <mat-grid-tile *ngFor="let similarBeer of similarBeers">
-              <mat-card class="recommended-card">
-                <mat-card-header>
-                  <img alt="Photo of beer" class="mat-card-image" mat-card-sm-image [src]="similarBeer.image_url">
-                </mat-card-header>
-                <mat-card-content class="dashboard-card-content">
-                  <h5 class="beer-title">{{similarBeer.name}}</h5>
-                </mat-card-content>
-              </mat-card>
-            </mat-grid-tile>
-          </mat-grid-list>
-        </div>
-      </div>
+    <div class="info-row">
+      <h2 >{{beer.name}}</h2>
+      <p class="gray-text">
+        {{beer.tagline}}
+      </p>
+      <hr>
+      <p>
+        <b>IBU: </b>{{beer.ibu}}&nbsp;&nbsp;
+        <b>ABV: </b>{{beer.abv}}%&nbsp;&nbsp;
+        <b>EBC: </b>{{beer.ebc}}&nbsp;&nbsp;
+      </p>
+      <p>
+        {{beer.description}}
+      </p>
+      <br/>
+      <b>Best served with:</b>
+      <ul>
+        <li class="li" *ngFor="let pairing of beer.food_pairing">
+          {{pairing}}
+        </li>
+      </ul>
     </div>
-    <section class="modal-card-body" *ngIf="selectedBeer">
-      <!-- Content ... -->
-      <!-- <p *ngIf="selectedBeer">
-        {{ selectedBeer.name }}
-      </p> -->
-
-      <div class="columns">
-        <div class="column">
-          <img
-            src="{{ selectedBeer.image_url }}"
-            alt="Avatar"
-            class="item-img"
-          />
-        </div>
-        <div class="column is-three-quarters">
-          <h4>
-            <b>{{ selectedBeer.name }}</b>
-          </h4>
-          <p>{{ selectedBeer.tagline }}</p>
-
-          <hr class="modal-hr" />
-
-          <div class="columns">
-            <div class="column">
-              <h4><b>IBU:</b> {{ selectedBeer.ibu }}</h4>
-            </div>
-            <div class="column">
-              <h4><b>ABV:</b> {{ selectedBeer.abv }}</h4>
-            </div>
-            <div class="column">
-              <h4><b>EBC:</b> {{ selectedBeer.ebc }}</h4>
-            </div>
-          </div>
-
-          <p>{{ selectedBeer.description }}</p>
-
-          <div class="content">
-            <h4>
-              <b>Better served with</b>
-            </h4>
-
-            <ul>
-              <li *ngFor="let item of selectedBeer.food_pairing">
-                {{ item }}
-              </li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column bordered" *ngFor="let similarBeer of similarBeers">
-          <img
-            src="{{ similarBeer.image_url }}"
-            alt="Avatar"
-            class="item-img"
-          />
-          <div class="card-container">
-            <h4 class="has-text-centered">
-              <b>{{ similarBeer.name }}</b>
-            </h4>
-          </div>
-        </div>
-      </div>
-    </section>
+  </div>
+  <br/>
+  <div class="column-recomended">
+    <h3 >You might also like</h3>
+    <div class="grid-container">
+      <mat-grid-list [cols]="3" rowHeight="220px">
+        <mat-grid-tile *ngFor="let similarBeer of similarBeers">
+          <mat-card class="recommended-card">
+            <mat-card-header>
+              <img alt="Beer Image" class="mat-card-image" mat-card-sm-image [src]="similarBeer.image_url">
+            </mat-card-header>
+            <mat-card-content class="dashboard-card-content">
+              <h5>{{similarBeer.name}}</h5>
+            </mat-card-content>
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
   </div>
 </div>

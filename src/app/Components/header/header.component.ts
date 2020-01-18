@@ -16,6 +16,8 @@ export class HeaderComponent implements OnInit {
   searchCtrl = new FormControl();
   searchBeers: Beer[];
 
+  beers: Beer[] = [];
+
   @Output() searchedBeers: EventEmitter<Beer[]> = new EventEmitter<Beer[]>();
 
   searchSubscription: Subscription;
@@ -35,6 +37,10 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  public onSearch(beersSearched: Beer[]) {
+    this.beers = beersSearched;
   }
 
 }

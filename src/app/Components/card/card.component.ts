@@ -29,11 +29,13 @@ export class CardComponent implements OnInit {
     public addFavourite(event) {
       event.stopPropagation();
       if (this.beersService.isFavourite(this.beer)) {
-        this.beer.is_favourite = false;
+        this.beer.favourite = false;
         this.beersService.removeFavouriteBeer(this.beer);
+        //location.reload(); 
+
       } 
       else {
-        this.beer.is_favourite = true;
+        this.beer.favourite = true;
         this.beersService.addFavouriteBeer(this.beer);
       }
     }

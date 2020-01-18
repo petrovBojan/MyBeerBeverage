@@ -63,11 +63,6 @@ h3 {
     margin-right: 0;
   }
 
-  .card.card-small {
-    height: 200px;
-    width: 200px;
-  }
-
   .card-container .card:not(.highlight-card) {
     cursor: pointer;
   }
@@ -96,12 +91,7 @@ h3 {
   }
 
   /* Responsive Styles */
-  @media screen and (max-width: 550px) {
-
-    .card-container > *:not(.circle-link) ,
-    .terminal {
-      width: 45%;
-    }
+  @media screen and (max-width: 550px) {    
 
     .card:not(.highlight-card) {
       height: 200px;

@@ -1,26 +1,10 @@
-h5, h6 {
-    margin: 2px 1px;
-}
-
-h3 {
-    margin: 2px 1px;
-    color: #ffa500;
-
-}
-
-  p {
-    margin-bottom: 2px;
-    font-size: small;
-  }
-.gray-text {
-    color: #bebebe;
-    font-size: small;
-}
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin-top: 16px;
+    margin-left: 20%;
+    margin-right: 20%;
   }
 
 
@@ -39,27 +23,9 @@ h3 {
     transition: all 0.2s ease-in-out;
     line-height: 24px;
   }
-  .image {
-    margin: 0 16px;
-    justify-content: center;
-    align-items: center;
-    height: 100px;
-    width: 100px;
-  }
-  .star {
-    align-self: flex-end;
-    height: 10px;
-    width: 10px;
-    color: #ffa500;
-  }
 
   .card-container .card:not(:last-child) {
-    margin-right: 0;
-  }
-
-  .card.card-small {
-    height: 200px;
-    width: 200px;
+    margin: 80;
   }
 
   .card-container .card:not(.highlight-card) {

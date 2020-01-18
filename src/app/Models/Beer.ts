@@ -16,5 +16,5 @@ export class Beer {
     food_pairing: string[];
     brewers_tips: string;
     contributed_by: string;
-    is_favourite?: boolean;
+    favourite?: boolean;
 }

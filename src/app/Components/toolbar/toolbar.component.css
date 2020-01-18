@@ -8,29 +8,7 @@
     color: white;
     font-weight: 600;
   }
-  h2,
-  h4
-   {
-    margin: 8px 8px;
-  }
-  h1 {
-      margin: -8px 3px;
-  }
-  h5, h6 {
-    margin: 2px 1px;
-}
-.spacer {
-    flex: 1;
-  }
-  .aligning {
-    align-self: stretch;
-    text-align: end;
-    align-items: flex-end;
-
-  }
-
-
-
+ 
   .primaryColor {
     background-color: #ffa500;
     height: 50px;
@@ -41,20 +19,9 @@
     color: white;
   
   }
-  .sidenav {
-    width: 200px;
-  }
+
   .flexEnd {
     flex: auto;
     justify-content: flex-end;
   }
   
-  .sidenav .mat-toolbar {
-    background: inherit;
-  }
-  
-  .mat-toolbar.mat-primary {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-  }

@@ -2,7 +2,7 @@
     <a class="card" target="_blank"  (click)="openPopUp()" >
       <div class="star" >
 
-          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.is_favourite}" (click)="addFavourite($event)">
+          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.favourite}" (click)="addFavourite($event)">
             <mat-icon>{{isFavourite()? 'star': 'star_border'}}</mat-icon>
           </button>
           
