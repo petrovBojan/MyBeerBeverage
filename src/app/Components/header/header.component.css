@@ -18,8 +18,8 @@ p {
   }
   .header {
     height: 100px;
-    margin: -8px;
     display: flex;
+    margin-bottom: -8px;
     align-items: center;
     flex-direction: column;
     background-color: #ffa500;

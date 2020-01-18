@@ -42,8 +42,8 @@ h3 {
     transition: all 0.2s ease-in-out;
     line-height: 24px;
   }
-  .image {
-    margin: 0 16px;
+  img {
+    margin-left: 62px;
     justify-content: center;
     align-items: center;
     height: 80px;

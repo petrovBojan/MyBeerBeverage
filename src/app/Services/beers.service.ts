@@ -12,11 +12,14 @@ import {Beer} from '../Models/Beer';
 export class BeersService {
 
 beersUrl: string = 'https://api.punkapi.com/v2/beers';
-limitBeers: string = '?per_page=13';
+limitBeers: string = '?per_page=5';
 
 private mySelectedBeer: Beer;
 
 private myFavouriteBeers: Map<Beer, boolean> = new Map<Beer, boolean>();
+
+
+public scrolled: Subject<boolean> = new Subject<boolean>();
 
 
   constructor(private http:HttpClient) { }
