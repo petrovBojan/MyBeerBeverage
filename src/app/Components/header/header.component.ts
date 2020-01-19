@@ -39,8 +39,8 @@ export class HeaderComponent implements OnInit {
   ngOnInit() {
   }
 
-  public onSearch(beersSearched: Beer[]) {
+ /*  public onSearch(beersSearched: Beer[]) {
     this.beers = beersSearched;
   }
-
+ */
 }

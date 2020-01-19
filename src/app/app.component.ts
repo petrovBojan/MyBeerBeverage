@@ -7,7 +7,7 @@ import { Beer } from './Models/Beer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'beers';
+  title = 'Beers';
   beers: Beer[] = [];
 
   public onSearch(beersSearched: Beer[]) {

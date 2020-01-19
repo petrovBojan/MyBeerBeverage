@@ -40,9 +40,7 @@ export class CardComponent implements OnInit {
       }
     }
 
-    /**
-     * Method used to check if the beer is favourited or not.
-     */
+
     public isFavourite() 
     {
       return this.beersService.isFavourite(this.beer);

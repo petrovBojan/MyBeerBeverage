@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import {BeersService} from '../../Services/beers.service';
 import { MatDialog, MatDialogConfig } from '@angular/material';
 import { Beer } from '../../Models/Beer'
-//import { FavoritesComponent } from '../Pages/favorites/favorites.component';
 import { DetailsPopupComponent } from '../details-popup/details-popup.component';
 
 @Component({
