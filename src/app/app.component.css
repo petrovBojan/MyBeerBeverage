@@ -40,8 +40,9 @@ h3 {
   .content {
     display: flex;
     margin-top: 8px;
+    background-image: url(../assets/beer.png);
 
-    background-color: #f3f3f3;
+    /* background-color: #f3f3f3; */
     max-width: 100%;
     min-height: 500px;
     flex-direction: column;

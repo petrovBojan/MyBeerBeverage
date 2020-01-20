@@ -19,9 +19,6 @@ private mySelectedBeer: Beer;
 private myFavouriteBeers: Map<Beer, boolean> = new Map<Beer, boolean>();
 
 
-public scrolled: Subject<boolean> = new Subject<boolean>();
-
-
   constructor(private http:HttpClient) { }
 
   getBeers(): Observable<Beer[]> {

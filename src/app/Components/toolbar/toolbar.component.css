@@ -10,13 +10,15 @@
   }
  
   .primaryColor {
-    background-color: #ffa500;
-    height: 50px;
+    background-image: url(../../../assets/background.jpg);
+
+    /* background-color: #ffa500; */
+        height: 50px;
     position: sticky;
     width: 100%;
     top: 0;
     z-index: 1;
-    color: white;
+    color: #ffa500;
   
   }
 
