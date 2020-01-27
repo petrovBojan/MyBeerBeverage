@@ -1,15 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
-
+import { HttpClientModule } from '@angular/common/http';
+import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ToolbarComponent } from './Components/toolbar/toolbar.component';
-import { HeaderComponent } from './Components/header/header.component';
-import { CardsComponent } from './Components/cards/cards.component';
-import { CardComponent } from './Components/card/card.component';
-import { FavoritesComponent } from './Components/Pages/favorites/favorites.component';
+import { HomeCardsComponent } from './Components/home-cards/home-cards.component';
+import { FavouriteCardsComponent } from './Components/favourite/favourite-cards.component';
 import { MaterialModule } from './material.module';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DetailsPopupComponent } from './Components/details-popup/details-popup.component';
@@ -18,10 +17,8 @@ import { DetailsPopupComponent } from './Components/details-popup/details-popup.
   declarations: [
     AppComponent,
     ToolbarComponent,
-    HeaderComponent,
-    CardsComponent,
-    CardComponent,
-    FavoritesComponent,
+    HomeCardsComponent,
+    FavouriteCardsComponent,
     DetailsPopupComponent
   ],
   imports: [
@@ -29,10 +26,13 @@ import { DetailsPopupComponent } from './Components/details-popup/details-popup.
     AppRoutingModule,
     HttpClientModule,
     MaterialModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    InfiniteScrollModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents: [FavoritesComponent,DetailsPopupComponent]
+  entryComponents: [DetailsPopupComponent]
 })
 export class AppModule { }

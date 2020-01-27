@@ -1,4 +1,4 @@
-export class Beer {
+export interface Beer {
     id: number;
     name: string;
     tagline: string;
@@ -13,8 +13,8 @@ export class Beer {
     srm: number;
     ph: number;
     attenuation_level: number;
-    food_pairing: string[];
+    food_pairing: string;
     brewers_tips: string;
     contributed_by: string;
-    favourite?: boolean;
+    isFavourite?: boolean;
 }

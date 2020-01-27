@@ -40,9 +40,8 @@ h3 {
   .content {
     display: flex;
     margin-top: 8px;
-    background-image: url(../assets/beer.png);
-
-    /* background-color: #f3f3f3; */
+    /* background-image: url(../assets/beer.png); */
+    background-color: #f3f3f3; 
     max-width: 100%;
     min-height: 500px;
     flex-direction: column;
@@ -53,7 +52,7 @@ h3 {
   footer {
     margin-top: 20px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
     line-height: 20px;
 

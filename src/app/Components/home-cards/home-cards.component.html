@@ -1,0 +1,38 @@
+<div class="content">
+<div class="header" role="banner" >
+  <h1>The Beer Bank</h1>
+  <p>Find your favourite beer here</p>
+  <input class="search-bar" type="text" id="beerSearchQuery" [formControl]="searchQuery" placeholder="Search for beer name" />
+</div>
+
+<section class="container content_body" infiniteScroll
+  [infiniteScrollDistance]="3"
+  [infiniteScrollThrottle]="100" 
+  [alwaysCallback] = "false" 
+  (scrolled)="onScroll()">
+    <div class="card-container" >
+<!--       col-lg-4 col-md-6 col-sm-12  --> 
+     <div class="card" *ngFor="let beer of beers; let i = index;">
+        <a  target="_blank"  (click)="openPopUp(beer)" >      
+          <img 
+          alt="Beer Image"
+          src= '{{ beer.image_url }}'  
+          />
+          <h5>{{ beer.name }}</h5>
+          <h6 class="gray-text">{{beer.tagline}}</h6>
+          <div class="star">
+            <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.isFavourite}" (click)="updateFavourite(beer, i)">
+              <mat-icon>{{beer.isFavourite? 'star': 'star_border'}}</mat-icon>
+            </button>
+          </div>
+        </a>
+      </div>
+    </div>
+    <!-- <div class="text-center"  *ngIf="isLoadingBeers">
+      <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading favourites...
+      </button>
+    </div> -->
+</section>
+</div>

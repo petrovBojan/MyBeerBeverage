@@ -11,7 +11,70 @@ import {Beer} from '../Models/Beer';
 })
 export class BeersService {
 
-beersUrl: string = 'https://api.punkapi.com/v2/beers';
+  beersUrl: string = 'https://api.punkapi.com/v2/beers?';
+  
+  private favouriteBeers : Array<number> = []; 
+  
+  private mySelectedBeer: Beer;
+
+  constructor(
+    private http: HttpClient 
+    ) { }
+
+    getFavouriteBeers(){
+      return this.favouriteBeers;
+    }
+
+    addFavouriteBeer(newBeerId: number){
+      this.favouriteBeers.push(newBeerId);
+      return this.favouriteBeers;
+    }
+    removeFavouriteBeer(id: number){
+      let index = this.favouriteBeers.indexOf(id);
+      this.favouriteBeers.splice(index, 1)
+      return this.favouriteBeers;
+    }
+
+/*********** HTTP CALLS ******/
+searchBeerByName(query){
+  if(!query){
+    return of([])
+  }
+  return this.http.get(this.beersUrl + 'beer_name=' + query )
+}
+
+getBeers(page = 1, size = 25){
+  return this.http.get(this.beersUrl + 'page=' + page + '&per_page=' + size)
+}
+
+getBeersByQuery(query){
+  return this.http.get(this.beersUrl + query)
+}
+
+getBeersByIds(ids: string){
+  return this.http.get(this.beersUrl + 'ids=' + ids)
+}
+
+
+// SimilarBeers
+
+public getSimilarBeer(): Observable<Beer[]> {
+  return this.http.get<Beer[]>(this.beersUrl + '/random');
+}
+
+// Selected Beers
+
+public get selectedBeer(): Beer {
+  const selectedBeer = this.mySelectedBeer;
+  return this.mySelectedBeer;
+}
+public set selectedBeer(value: Beer) {
+  this.mySelectedBeer = value;
+}
+
+
+
+/* beersUrl: string = 'https://api.punkapi.com/v2/beers';
 limitBeers: string = '?per_page=15';
 beerName: string = '?beer_name=';
 private mySelectedBeer: Beer;
@@ -78,7 +141,7 @@ private myFavouriteBeers: Map<Beer, boolean> = new Map<Beer, boolean>();
 
   public isFavourite(beerToCheck: Beer) {
     return this.myFavouriteBeers.get(beerToCheck) ? true : false;
-  }
+  } */
 
 ////////////////////
 

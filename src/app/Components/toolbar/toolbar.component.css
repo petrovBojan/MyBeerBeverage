@@ -1,24 +1,14 @@
-.toolbar {
-    height: 60px;
-    margin: -8px -8px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: #ffa500;
-    color: white;
-    font-weight: 600;
-  }
- 
   .primaryColor {
-    background-image: url(../../../assets/background.jpg);
+   /* background-image: url(../../../assets/background.jpg); */
 
-    /* background-color: #ffa500; */
-        height: 50px;
+    background-color: #ffa500; 
+    height: 50px;
     position: sticky;
     width: 100%;
     top: 0;
     z-index: 1;
-    color: #ffa500;
+    color: #ffffff;
+    margin-bottom: -8px;
   
   }
 

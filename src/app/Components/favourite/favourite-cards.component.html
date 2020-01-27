@@ -1,0 +1,46 @@
+<div class="content">
+  <div class="header" role="banner" >
+    <h1>The Beer Bank</h1>
+    <p>Your favourite beers</p>
+  </div>
+  <section class="container content_body" infiniteScroll
+  [infiniteScrollDistance]="2"
+  [infiniteScrollThrottle]="50" 
+  [alwaysCallback] = "false" 
+  (scrolled)="onScroll()">
+    <!--Loading Spinner
+    <div class="text-center"  *ngIf="isFetchingBeers">
+      <button class="btn btn-primary" type="button" disabled>
+        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+        Loading favourites...
+      </button>
+    </div>
+
+    <div class="text-center"  *ngIf="favouriteBeers.length < 1 && !isFetchingBeers">
+      <div class="alert alert-primary" role="alert">
+        You do not have any favourites saved!
+      </div>
+    </div>
+    End Show when bo favourites-->
+
+    <div class="card-container" *ngIf="favouriteBeers.length > 0 && !isFetchingBeers">
+      <div class="card" *ngFor="let beer of favouriteBeers; let i = index;">
+        <a  target="_blank"  (click)="openPopUp(beer)" >      
+          <img 
+          alt="Beer Image"
+          src= '{{ beer.image_url }}'  
+          />
+          <h5>{{ beer.name }}</h5>
+          <h6 class="gray-text">{{beer.tagline}}</h6>
+        
+
+        <div class="star" >
+          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.isFavourite}" (click)="removeFavourite(beer, i)">
+            <mat-icon>{{beer.isFavourite? 'star': 'star_border'}}</mat-icon>
+          </button>
+      </div>
+    </a>
+      </div>
+    </div>
+  </section>
+</div>

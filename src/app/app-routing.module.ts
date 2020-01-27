@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { CardsComponent } from '../app/Components/cards/cards.component'
+import { HomeCardsComponent } from './Components/home-cards/home-cards.component'
 
-import { FavoritesComponent } from '../app/Components/Pages/favorites/favorites.component'
+import { FavouriteCardsComponent } from './Components/favourite/favourite-cards.component'
 
 const routes: Routes = [
-  { path: '', component: CardsComponent},
-  { path: 'favourite', component: FavoritesComponent}
+  { path: '', component: HomeCardsComponent},
+  { path: 'favourite', component: FavouriteCardsComponent}
 
 ];
 
