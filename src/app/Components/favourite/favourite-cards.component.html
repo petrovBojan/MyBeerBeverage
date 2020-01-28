@@ -8,12 +8,11 @@
   [infiniteScrollThrottle]="50" 
   [alwaysCallback] = "false" 
   (scrolled)="onScroll()">
-    <!--Loading Spinner
+
     <div class="text-center"  *ngIf="isFetchingBeers">
-      <button class="btn btn-primary" type="button" disabled>
-        <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        Loading favourites...
-      </button>
+      <div class="alert alert-primary" role="status">
+        Loading Favourites...
+      </div>
     </div>
 
     <div class="text-center"  *ngIf="favouriteBeers.length < 1 && !isFetchingBeers">
@@ -21,7 +20,6 @@
         You do not have any favourites saved!
       </div>
     </div>
-    End Show when bo favourites-->
 
     <div class="card-container" *ngIf="favouriteBeers.length > 0 && !isFetchingBeers">
       <div class="card" *ngFor="let beer of favouriteBeers; let i = index;">

@@ -19,8 +19,6 @@ export class HomeCardsComponent implements OnInit {
   private size: number = 25;
 
   public beer: Beer;
-
-  //public isLoadingBeers: Boolean = false;
   
   public searchQuery: FormControl = new FormControl();
 
@@ -50,16 +48,12 @@ export class HomeCardsComponent implements OnInit {
   }
 
   getBeersList(page = this.page, size = this.size){
-    //this.isLoadingBeers = true; 
-    page = page >= 1 ? page : 1; 
     this.beersService.getBeers(page, size).subscribe(
       (response: any)=>{
         this.checkAndAddFavourites(response);
-        //this.isLoadingBeers = false; 
       },
       (error)=>{
         alert("Can't fetch Beers.")
-        //this.isLoadingBeers = false;
       }
     )
   }
