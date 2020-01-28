@@ -25,6 +25,11 @@
 
     <div class="card-container" *ngIf="favouriteBeers.length > 0 && !isFetchingBeers">
       <div class="card" *ngFor="let beer of favouriteBeers; let i = index;">
+        <div class="star" >
+          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.isFavourite}" (click)="removeFavourite(beer, i)">
+            <mat-icon>{{beer.isFavourite? 'star': 'star_border'}}</mat-icon>
+          </button>
+        </div>
         <a  target="_blank"  (click)="openPopUp(beer)" >      
           <img 
           alt="Beer Image"
@@ -32,14 +37,7 @@
           />
           <h5>{{ beer.name }}</h5>
           <h6 class="gray-text">{{beer.tagline}}</h6>
-        
-
-        <div class="star" >
-          <button mat-icon-button class="star-button" [ngClass]="{'star-button-favourite': beer.isFavourite}" (click)="removeFavourite(beer, i)">
-            <mat-icon>{{beer.isFavourite? 'star': 'star_border'}}</mat-icon>
-          </button>
-      </div>
-    </a>
+        </a>
       </div>
     </div>
   </section>

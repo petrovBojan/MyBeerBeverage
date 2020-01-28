@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Beer } from './Models/Beer';
 
 @Component({
   selector: 'app-root',
@@ -7,10 +6,6 @@ import { Beer } from './Models/Beer';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'Beers';
-  beers: Beer[] = [];
+  title = 'My Beer Beverage';
 
-  public onSearch(beersSearched: Beer[]) {
-    this.beers = beersSearched;
-  }
 }

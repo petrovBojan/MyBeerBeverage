@@ -11,11 +11,7 @@ import { BeersService }  from '../../Services/beers.service';
   styleUrls: ['./details-popup.component.css']
 })
 export class DetailsPopupComponent implements OnInit {
-  //public beer: Beer;
-
-  //@Input() singleBeer:Beer;
-
-  // The beers at the bottom will be randomized
+ 
   public similarBeers: Beer[] = [];
 
   constructor(

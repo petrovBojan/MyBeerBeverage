@@ -31,11 +31,10 @@ export class HomeCardsComponent implements OnInit {
 
     
   ngOnInit() {
-  //subscribe to input field changes
   this.searchQuery.valueChanges.pipe(  
     debounceTime(300),   
     distinctUntilChanged(), 
-    switchMap((query) =>  this.beersService.searchBeerByName(query))  //trigger search on every query
+    switchMap((query) =>  this.beersService.searchBeerByName(query))  
   )
   .subscribe( (result:Array<Beer>) => 
   {
@@ -43,21 +42,20 @@ export class HomeCardsComponent implements OnInit {
       this.getBeersList();
     }
     else{
-      this.checkAndAddFavourites(result); //parse received beers to map against favourites
+      this.checkAndAddFavourites(result); 
     }
   });
 
-  //init withfething all beers
   this.getBeersList();  
   }
 
   getBeersList(page = this.page, size = this.size){
-    //this.isLoadingBeers = true; //init spinner
-    page = page >= 1 ? page : 1; //also helps when page is reloaded when scroll is at bottom.
+    //this.isLoadingBeers = true; 
+    page = page >= 1 ? page : 1; 
     this.beersService.getBeers(page, size).subscribe(
       (response: any)=>{
         this.checkAndAddFavourites(response);
-        //this.isLoadingBeers = false; //hide spinner
+        //this.isLoadingBeers = false; 
       },
       (error)=>{
         alert("Can't fetch Beers.")
@@ -77,10 +75,10 @@ export class HomeCardsComponent implements OnInit {
     )
 
     if(this.page == 1){
-      this.beers = beersToParse;  //if page number is1, cleer current beer list
+      this.beers = beersToParse; 
     }
     else{
-      this.beers = this.beers.concat(beersToParse);  //else add to current list
+      this.beers = this.beers.concat(beersToParse); 
     }
   }
   

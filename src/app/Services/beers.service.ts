@@ -2,8 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
 
 import { Observable, of, Subject } from 'rxjs';
-import { catchError, map, tap } from 'rxjs/operators';
-
 import {Beer} from '../Models/Beer';
 
 @Injectable({
@@ -21,20 +19,6 @@ export class BeersService {
     private http: HttpClient 
     ) { }
 
-    getFavouriteBeers(){
-      return this.favouriteBeers;
-    }
-
-    addFavouriteBeer(newBeerId: number){
-      this.favouriteBeers.push(newBeerId);
-      return this.favouriteBeers;
-    }
-    removeFavouriteBeer(id: number){
-      let index = this.favouriteBeers.indexOf(id);
-      this.favouriteBeers.splice(index, 1)
-      return this.favouriteBeers;
-    }
-
 // Http povici
 
   searchBeerByName(query){
@@ -48,12 +32,24 @@ export class BeersService {
     return this.http.get(this.beersUrl + '?page=' + page + '&per_page=' + size)
   }
 
-  /* getBeersByQuery(query){
-    return this.http.get(this.beersUrl + query)
-  } */
-
   getBeersByIds(ids: string){
     return this.http.get(this.beersUrl + '?ids=' + ids)
+  }
+
+  // favourites 
+
+  getFavouriteBeers(){
+    return this.favouriteBeers;
+  }
+
+  addFavouriteBeer(newBeerId: number){
+    this.favouriteBeers.push(newBeerId);
+    return this.favouriteBeers;
+  }
+  removeFavouriteBeer(id: number){
+    let index = this.favouriteBeers.indexOf(id);
+    this.favouriteBeers.splice(index, 1)
+    return this.favouriteBeers;
   }
 
 
