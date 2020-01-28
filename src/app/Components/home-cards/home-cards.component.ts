@@ -14,65 +14,64 @@ import { debounceTime, distinctUntilChanged, switchMap } from "rxjs/operators";
 }) 
 export class HomeCardsComponent implements OnInit {
 
-  constructor( 
+  public beers: Array<Beer> = [];
+  private page: number = 1;
+  private size: number = 25;
+
+  public beer: Beer;
+
+  //public isLoadingBeers: Boolean = false;
+  
+  public searchQuery: FormControl = new FormControl();
+
+  constructor(
     private beersService: BeersService,
-     private popUp: MatDialog) { }
+    private popUp: MatDialog
+     ) { }
 
-     public beers: Array<Beer> = [];
-     private page: number = 1;
-     private size: number = 25;
-   
-     public beer: Beer;
-   
-     public isLoadingBeers: Boolean = false;
-     
-     public searchQuery: FormControl = new FormControl();
-
-     //public beer: Beer;
-
-
+    
   ngOnInit() {
- //subscribe to input field changes
- this.searchQuery.valueChanges.pipe(  
-  debounceTime(300),    //delay by 200ms for changes
-  distinctUntilChanged(),  //ingnore similar emits
-  switchMap((query) =>  this.beersService.searchBeerByName(query))  //trigger search on every query
-)
-.subscribe( (result:Array<Beer>) => 
-{
-  if(result.length < 1 && !this.searchQuery.value){
-    this.getBeersList();  //reset beers list to alll beers, when inout bix is cleared
-  }
-  else{
-    this.checkAndAddFavourites(result); //parse received beers to map against favourites
-  }
-});
+  //subscribe to input field changes
+  this.searchQuery.valueChanges.pipe(  
+    debounceTime(300),   
+    distinctUntilChanged(), 
+    switchMap((query) =>  this.beersService.searchBeerByName(query))  //trigger search on every query
+  )
+  .subscribe( (result:Array<Beer>) => 
+  {
+    if(result.length < 1 && !this.searchQuery.value){
+      this.getBeersList();
+    }
+    else{
+      this.checkAndAddFavourites(result); //parse received beers to map against favourites
+    }
+  });
 
-//init withfething all beers
-this.getBeersList();  
-}
+  //init withfething all beers
+  this.getBeersList();  
+  }
 
   getBeersList(page = this.page, size = this.size){
     //this.isLoadingBeers = true; //init spinner
     page = page >= 1 ? page : 1; //also helps when page is reloaded when scroll is at bottom.
     this.beersService.getBeers(page, size).subscribe(
       (response: any)=>{
-        this.checkAndAddFavourites(response); //parse received beers to map against favourites
+        this.checkAndAddFavourites(response);
         //this.isLoadingBeers = false; //hide spinner
       },
       (error)=>{
-        alert("Can't fetch Beers.") //can addd more error handling
+        alert("Can't fetch Beers.")
         //this.isLoadingBeers = false;
       }
     )
   }
 
   checkAndAddFavourites(beersToParse: Array<Beer>){
-    const favourites = this.beersService.getFavouriteBeers(); //get favourites indexes in service
+    const favourites = this.beersService.getFavouriteBeers(); 
 
     beersToParse.map(
       beer => {
-        beer.isFavourite = favourites.includes(beer.id)? true : false; //add is favourite flag to favourites 
+        beer.isFavourite = favourites.includes(beer.id)? true : false;
         return beer;
       }
     )
@@ -85,7 +84,6 @@ this.getBeersList();
     }
   }
   
-///handle add or remove favourite
 updateFavourite(beer: Beer, index){
   if(beer.isFavourite){
     this.beersService.removeFavouriteBeer(beer.id);
@@ -97,22 +95,15 @@ updateFavourite(beer: Beer, index){
   }
 }
 
-    //////////////////
-   openPopUp(): void {
-    this.beersService.selectedBeer = this.beer;
+   openPopUp(beer: any)  {
+    //this.beersService.selectedBeer = this.beer;
     const popUpRef = this.popUp.open(DetailsPopupComponent,  {
-      width: '60%'
+      width: '80%',
+      data: beer
     });
   }
 
-
-   /*  
-    public isFavourite() 
-    {
-      return this.beersService.isFavourite(this.beer);
-    } */
-
-    onScroll(){  //handle scroll trigger
+    onScroll(){ 
       this.page++;
       this.getBeersList();
     }

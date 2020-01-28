@@ -1,5 +1,5 @@
 <div class="flexEnd">
-  <button mat-icon-button class="flexEnd" (click)="closeDialog()">
+  <button mat-icon-button class="flexEnd" (click)="closePopUp()">
     <mat-icon>close</mat-icon>
   </button>
 </div>
@@ -9,7 +9,7 @@
       <img alt="Photo of beer" mat-card-lg-image [src]="beer.image_url">
     </div>
     <div class="info-row">
-      <h2 >{{selectedBeer?.name}}</h2>
+      <h2 >{{beer.name}}</h2>
       <p class="gray-text">
         {{beer.tagline}}
       </p>

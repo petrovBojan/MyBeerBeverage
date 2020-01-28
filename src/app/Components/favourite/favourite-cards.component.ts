@@ -16,7 +16,7 @@ export class FavouriteCardsComponent implements OnInit {
 
   public favouriteBeersList: Array<number> = [];
   public favouriteBeers: Array<Beer> = [];
-  public viewedBeer: Beer;
+  public beer: Beer;
 
   public isFetchingBeers: Boolean = false;
 
@@ -27,14 +27,14 @@ export class FavouriteCardsComponent implements OnInit {
   }
 
  ngOnInit() {
-  this.getFavouriteBeers(); //init with getting favourites
+  this.getFavouriteBeers(); 
 }
 
-getFavouriteBeers(){ //favourtie beers
-  this.favouriteBeersList = this.beersService.getFavouriteBeers(); //get saved Ids of favourite beers from service
+getFavouriteBeers(){ 
+  this.favouriteBeersList = this.beersService.getFavouriteBeers(); 
 
   this.isFetchingBeers = true;
-  this.beersService.getBeersByIds(this.favouriteBeersList.join("|")).subscribe( //retrieve beers by Ids
+  this.beersService.getBeersByIds(this.favouriteBeersList.join("|")).subscribe( 
     (response: any)=>{
       response.map((beer: Beer) => {
           beer.isFavourite = true;
@@ -45,20 +45,21 @@ getFavouriteBeers(){ //favourtie beers
       this.isFetchingBeers = false;
     },
     (error)=>{
-      alert("Can't fetch errors") //can add more error handling based on server responses
+      alert("Can't fetch errors") 
       this.isFetchingBeers = false;
     }
   )
 }
-removeFavourite(beer: Beer, index){   //remove beer from favourite
+removeFavourite(beer: Beer, index){  
   this.favouriteBeersList = this.beersService.removeFavouriteBeer(beer.id);
   this.favouriteBeers.splice(index, 1);
 }
 
-openPopUp(): void {
-  this.beersService.selectedBeer = this.viewedBeer;
+openPopUp(beer: any)  {
+  //this.beersService.selectedBeer = this.beer;
   const popUpRef = this.popUp.open(DetailsPopupComponent,  {
-    width: '60%'
+    width: '60%',
+    data: beer
   });
 }
 }

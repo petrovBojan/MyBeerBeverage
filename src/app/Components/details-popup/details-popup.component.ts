@@ -1,6 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Inject } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { MatDialogRef } from '@angular/material';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 import { Beer } from '../../Models/Beer';
 import { BeersService }  from '../../Services/beers.service';
@@ -11,7 +11,9 @@ import { BeersService }  from '../../Services/beers.service';
   styleUrls: ['./details-popup.component.css']
 })
 export class DetailsPopupComponent implements OnInit {
-  public beer: Beer;
+  //public beer: Beer;
+
+  //@Input() singleBeer:Beer;
 
   // The beers at the bottom will be randomized
   public similarBeers: Beer[] = [];
@@ -19,31 +21,21 @@ export class DetailsPopupComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private beerService: BeersService,
-    public dialogRef: MatDialogRef<DetailsPopupComponent>
+    public popUp: MatDialogRef<DetailsPopupComponent>,
+    @Inject(MAT_DIALOG_DATA) public beer: any
 
   ) {
-    this.beer = this.beerService.selectedBeer;
+    //this.beer = this.beerService.selectedBeer;
   }
 
- /*  getSimilarsBeers() {
-    let similarBeers = [];
-    while (similarBeers.length < 3) {
-      let item = this.beers[Math.floor(Math.random() * this.beers.length)];
-      if (!similarBeers.includes(item)) {
-        similarBeers.push(item);
-      }
-    }
-    return similarBeers;
-  }
- */
-  async ngOnInit() {
+   async ngOnInit() {
     for (let i = 0; i < 3; i++) {
       const similarBeer = await this.beerService.getSimilarBeer().toPromise();
       this.similarBeers.push(...similarBeer);
     }
-  }
+  } 
 
-  public closeDialog() {
-    this.dialogRef.close();
+ public closePopUp() {
+    this.popUp.close();
   }
 }

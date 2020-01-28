@@ -11,7 +11,7 @@ import {Beer} from '../Models/Beer';
 })
 export class BeersService {
 
-  beersUrl: string = 'https://api.punkapi.com/v2/beers?';
+  beersUrl: string = 'https://api.punkapi.com/v2/beers';
   
   private favouriteBeers : Array<number> = []; 
   
@@ -35,74 +35,29 @@ export class BeersService {
       return this.favouriteBeers;
     }
 
-/*********** HTTP CALLS ******/
-searchBeerByName(query){
-  if(!query){
-    return of([])
-  }
-  return this.http.get(this.beersUrl + 'beer_name=' + query )
-}
+// Http povici
 
-getBeers(page = 1, size = 25){
-  return this.http.get(this.beersUrl + 'page=' + page + '&per_page=' + size)
-}
-
-getBeersByQuery(query){
-  return this.http.get(this.beersUrl + query)
-}
-
-getBeersByIds(ids: string){
-  return this.http.get(this.beersUrl + 'ids=' + ids)
-}
-
-
-// SimilarBeers
-
-public getSimilarBeer(): Observable<Beer[]> {
-  return this.http.get<Beer[]>(this.beersUrl + '/random');
-}
-
-// Selected Beers
-
-public get selectedBeer(): Beer {
-  const selectedBeer = this.mySelectedBeer;
-  return this.mySelectedBeer;
-}
-public set selectedBeer(value: Beer) {
-  this.mySelectedBeer = value;
-}
-
-
-
-/* beersUrl: string = 'https://api.punkapi.com/v2/beers';
-limitBeers: string = '?per_page=15';
-beerName: string = '?beer_name=';
-private mySelectedBeer: Beer;
-
-private myFavouriteBeers: Map<Beer, boolean> = new Map<Beer, boolean>();
-
-
-  constructor(private http:HttpClient) { }
-
-  getBeers(): Observable<Beer[]> {
-    return this.http.get<Beer[]>(`${this.beersUrl}${this.limitBeers}`);
-    
+  searchBeerByName(query){
+    if(!query){
+      return of([])
+    }
+    return this.http.get(this.beersUrl + '?beer_name=' + query )
   }
 
-  public searchByBeerName(name: string): Observable<Beer[]> {
-    return this.http.get<Beer[]>(`${this.beersUrl}${this.beerName}${name}`);
+  getBeers(page = 1, size = 25){
+    return this.http.get(this.beersUrl + '?page=' + page + '&per_page=' + size)
   }
 
-  searchBeers(term: string): Observable<Beer[]> {
+  /* getBeersByQuery(query){
+    return this.http.get(this.beersUrl + query)
+  } */
 
-    if (!term.trim()) return of([]);
-    let url = `${this.beersUrl}${this.beerName}${term.replace(" ", "_")}`;
-    return this.http
-      .get<[Beer]>(url)
-      .pipe(tap(_ => console.log(`found heroes matching "${term}"`)));
+  getBeersByIds(ids: string){
+    return this.http.get(this.beersUrl + '?ids=' + ids)
   }
-  
-// SimilarBeers
+
+
+  // SimilarBeers
 
   public getSimilarBeer(): Observable<Beer[]> {
     return this.http.get<Beer[]>(this.beersUrl + '/random');
@@ -117,32 +72,4 @@ private myFavouriteBeers: Map<Beer, boolean> = new Map<Beer, boolean>();
   public set selectedBeer(value: Beer) {
     this.mySelectedBeer = value;
   }
-
-////////////////////////////////////
-
-  // favourite Beers
-
-  public getFavouriteBeers(): Beer[] {
-    const keys = Array.from( this.myFavouriteBeers.keys() );
-    return keys.filter((key) => {
-      return this.myFavouriteBeers.get(key);
-    });
-  }
-
-  
-  public addFavouriteBeer(newFavourite: Beer) {
-    this.myFavouriteBeers.set(newFavourite, true);
-  }
-
-
-  public removeFavouriteBeer(beerToRemove: Beer) {
-    this.myFavouriteBeers.set(beerToRemove, false);
-  }
-
-  public isFavourite(beerToCheck: Beer) {
-    return this.myFavouriteBeers.get(beerToCheck) ? true : false;
-  } */
-
-////////////////////
-
 }
